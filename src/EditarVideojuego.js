@@ -35,7 +35,7 @@ class EditarVideojuego extends React.Component {
         super(props);
         this.state = {
             videojuego: {
-                id: "",
+                _id: "",
                 "nombre": "",
                 "precio": "",
                 "calificacion": "",
@@ -49,7 +49,7 @@ class EditarVideojuego extends React.Component {
         // Obtener ID de URL
         const idVideojuego = this.props.match.params.id;
         // Llamar a la API para obtener los detalles
-        const respuesta = await fetch(`${Constantes.RUTA_API}/obtener_videojuego.php?id=${idVideojuego}`);
+        const respuesta = await fetch(`${Constantes.RUTA_API}/${idVideojuego}`);
         const videojuego = await respuesta.json();
         // "refrescar" el formulario
         this.setState({
@@ -90,9 +90,12 @@ class EditarVideojuego extends React.Component {
 
         const cargaUtil = JSON.stringify(this.state.videojuego);
         // ¡Y enviarlo!
-        const respuesta = await fetch(`${Constantes.RUTA_API}/actualizar_videojuego.php`, {
+        const respuesta = await fetch(`${Constantes.RUTA_API}/`, {
             method: "PUT",
             body: cargaUtil,
+            headers: {
+                "Content-Type": "application/json",
+            }
         });
         const exitoso = await respuesta.json();
         if (exitoso) {
@@ -105,7 +108,7 @@ class EditarVideojuego extends React.Component {
                 draggable: true,
                 progress: undefined,
             });
-            
+
         } else {
             toast.error("Error guardando. Intenta de nuevo");
         }

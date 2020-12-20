@@ -58,7 +58,8 @@ class FilaDeTablaDeVideojuego extends React.Component {
         if (!resultado.value) {
             return;
         }
-        const respuesta = await fetch(`${Constantes.RUTA_API}/eliminar_videojuego.php?id=${this.props.videojuego.id}`, {
+        console.log("Eliminando con id ", this.props.videojuego._id);
+        const respuesta = await fetch(`${Constantes.RUTA_API}/${this.props.videojuego._id}`, {
             method: "DELETE",
         });
         const exitoso = await respuesta.json();
@@ -89,7 +90,7 @@ class FilaDeTablaDeVideojuego extends React.Component {
                 <td>{this.props.videojuego.precio}</td>
                 <td>{this.props.videojuego.calificacion}</td>
                 <td>
-                    <Link to={`/videojuegos/editar/${this.props.videojuego.id}`} className="button is-info">Editar</Link>
+                    <Link to={`/videojuegos/editar/${this.props.videojuego._id}`} className="button is-info">Editar</Link>
                 </td>
                 <td>
                     <button onClick={this.eliminar} className="button is-danger">Eliminar</button>

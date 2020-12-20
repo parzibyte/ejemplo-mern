@@ -26,6 +26,6 @@ También tengo canal de YouTube: https://www.youtube.com/channel/UCroP4BTWjfM0Ck
 ------------------------------------------------------------------------------------------------
 */
 const Constantes = {
-    RUTA_API: "http://localhost:5000",
+    RUTA_API: "http://localhost:5000/videojuegos",
 };
 export default Constantes;

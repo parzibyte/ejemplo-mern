@@ -38,7 +38,7 @@ class VerVideojuegos extends React.Component {
         };
     }
     async componentDidMount() {
-        const respuesta = await fetch(`${Constantes.RUTA_API}/obtener_videojuegos.php`);
+        const respuesta = await fetch(`${Constantes.RUTA_API}`);
         const videojuegos = await respuesta.json();
         this.setState({
             videojuegos: videojuegos,
@@ -64,7 +64,7 @@ class VerVideojuegos extends React.Component {
                         </thead>
                         <tbody>
                             {this.state.videojuegos.map(videojuego => {
-                                return <FilaDeTablaDeVideojuego key={videojuego.id} videojuego={videojuego}></FilaDeTablaDeVideojuego>;
+                                return <FilaDeTablaDeVideojuego key={videojuego._id} videojuego={videojuego}></FilaDeTablaDeVideojuego>;
                             })}
                         </tbody>
                     </table>

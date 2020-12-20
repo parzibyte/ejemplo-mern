@@ -78,9 +78,12 @@ class AgregarVideojuego extends React.Component {
 
         const cargaUtil = JSON.stringify(this.state.videojuego);
         // ¡Y enviarlo!
-        const respuesta = await fetch(`${Constantes.RUTA_API}/guardar_videojuego.php`, {
+        const respuesta = await fetch(`${Constantes.RUTA_API}`, {
             method: "POST",
             body: cargaUtil,
+            headers: {
+                "Content-Type":"application/json",
+            }
         });
         const exitoso = await respuesta.json();
         if (exitoso) {

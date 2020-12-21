@@ -1,6 +1,4 @@
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/videojuegos', { useNewUrlParser: true, useUnifiedTopology: true });
-
+const mongoose = require('../conexion_mongo');
 const Videojuego = mongoose.model('Videojuego', {
     nombre: {
         type: String,

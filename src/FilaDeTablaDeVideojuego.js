@@ -58,7 +58,6 @@ class FilaDeTablaDeVideojuego extends React.Component {
         if (!resultado.value) {
             return;
         }
-        console.log("Eliminando con id ", this.props.videojuego._id);
         const respuesta = await fetch(`${Constantes.RUTA_API}/${this.props.videojuego._id}`, {
             method: "DELETE",
         });
